@@ -5,6 +5,8 @@ QRGENPATH = '../qr/'
 sys.path.append(QRGENPATH)
 import qrgen
 
+import re
+
 app = Flask(__name__)
 app.config.from_object('config')
 
@@ -36,7 +38,10 @@ def nocookies():
 def qrURL(URL):
     '''Render QR code and return image URL.'''
 
-    tempURL = './static/img/temp.png'
+    # Needs to be generalized to https
+    URL = 'http://'+URL
+
+    tempURL = './static/img/temp-'+re.sub('\W','_',URL)+'.png'
 
     print 'URL:',URL
     print 'type(URL):',type(URL)

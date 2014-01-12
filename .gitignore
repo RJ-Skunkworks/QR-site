@@ -1,6 +1,6 @@
 # Ignore this!
 *.pyc
-*temp.png
+temp*.png
 *.svg
 *.sqlite
 
