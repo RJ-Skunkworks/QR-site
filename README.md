@@ -9,3 +9,8 @@ qrwebsite
 * python-qrcode - via pip
 * Flask - via pip
 * Image - via pip (installs Pillow)
+
+###Running the site
+```
+python routes.py
+```
