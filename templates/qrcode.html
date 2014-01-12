@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <h2>This is the QR generator app thing!<h2>
+    <h3>Your QR Code:<h3>
+    <img src="{{ imgURL }}"/>
+    <br/>
+    <h3><a href="{{ URL }}">{{ URL }}</a><h3>
+  </div>
+{% endblock %}
