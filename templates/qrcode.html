@@ -5,6 +5,10 @@
     <h3>Your QR Code:<h3>
     <img src="{{ imgURL }}"/>
     <br/>
-    <h3><a href="{{ URL }}">{{ URL }}</a><h3>
+    {% if prefix %}
+        <h3><a href="{{ prefix+URL }}">{{ prefix+URL }}</a><h3>
+    {% else %}
+        <h3>{{ URL }}<h3>
+    {% endif %}
   </div>
 {% endblock %}

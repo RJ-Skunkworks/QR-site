@@ -4,8 +4,13 @@
     <h2>This is the QR generator app thing!<h2>
     <h3>Enter a URL<h3>
     <form action="/qrrequest" method="post">
-      http://<input type="text" name="URL" />
-      <input type="submit" value="Generate QR Code" />
+        <select name="prefix">
+            <option value="http://">http://</option>
+            <option value="https://">https://</option>
+            <option value=""> </option>
+        </select>
+        <input type="text" name="URL" />
+        <input type="submit" value="Generate QR Code" />
     </form>
   </div>
 {% endblock %}
