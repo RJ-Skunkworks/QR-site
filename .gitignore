@@ -3,4 +3,6 @@
 temp*.png
 *.svg
 *.sqlite
-
+.idea/
+*.iml
+.DS_STORE
