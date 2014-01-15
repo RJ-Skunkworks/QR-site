@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+from functools import wraps
 
 import sys
 QRGENPATH = '../qr/'
@@ -24,13 +25,20 @@ def qrrequest():
     session['URL'] = request.form['URL']
     return redirect(url_for('qrcode'))
 
+def cookiecheck(f):
+    '''Check if cookies are on.'''
+    @wraps(f)
+    def cookiewrap():
+        if session:
+            return f()
+        else:
+            return redirect(url_for('nocookies'))
+    return cookiewrap
+
 @app.route('/qrcode')
+@cookiecheck
 def qrcode():
-    try:
-        # Cookie test
-        return render_template('qrcode.html', imgURL = qrURL(session['prefix'],session['URL']), URL = session['URL'], prefix = session['prefix'])
-    except KeyError:
-        return redirect(url_for('nocookies'))
+    return render_template('qrcode.html', imgURL = qrURL(session['prefix'],session['URL']), URL = session['URL'], prefix = session['prefix'])
 
 @app.route('/nocookies')
 def nocookies():
@@ -38,8 +46,6 @@ def nocookies():
 
 def qrURL(prefix,URL):
     '''Render QR code and return image URL.'''
-
-    # TODO: Needs to be generalized to https
     URL = prefix+URL
 
     tempURL = './static/img/temp-'+re.sub('\W','_',URL)+'.png'
