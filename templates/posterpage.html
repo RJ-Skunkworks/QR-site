@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <div class="poster">
+        {% if session['poster.title'] %}
+            <h2>{{ session['poster.title'] }}</h2>
+        {% endif %}
+    <div class="poster-thumb">
+        <img src="./static/img/test-poster.png"/>
+    </div>
+    <div class="poster-info">
+        {% if session['poster.authors'] %}
+            <p>{{ session['poster.authors'] }}</br>
+        {% endif %}
+        {% if session['poster.contact'] %}
+            {{ session['poster.contact'] }}</p>
+        {% endif %}
+        {% if session['poster.conf'] %}
+            <p>{{ session['poster.conf'] }}</br>
+            {{ session['poster.date']}}</p>
+        {% endif %}
+    </div>
+    <div class="abstract">
+        {% if session['poster.abstract'] %}
+            <p>{{ session['poster.abstract'] }}</p>
+        {% endif %}
+    </div>
+    </div>
+    </br>
+    <hr>
+
+    <h3>Your QR Code:</h3>
+    <div style="text-align: center;">
+        <img src="{{ imgURL }}"/>
+    </div>
+    <br/>
+    {% if prefix %}
+        <h3><a href="{{ prefix+URL }}">{{ prefix+URL }}</a></h3>
+    {% else %}
+        <h3>{{ URL }}</h3>
+    {% endif %}
+  </div>
+{% endblock %}
