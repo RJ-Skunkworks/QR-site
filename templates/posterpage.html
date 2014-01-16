@@ -6,7 +6,7 @@
             <h2>{{ session['poster.title'] }}</h2>
         {% endif %}
     <div class="poster-thumb">
-        <img src="./static/img/test-poster.png"/>
+        <img src="{{ pngpath }}"/>
     </div>
     <div class="poster-info">
         {% if session['poster.authors'] %}

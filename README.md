@@ -9,6 +9,11 @@ qrwebsite
 * python-qrcode - via pip
 * Flask - via pip
 * Image - via pip (installs Pillow)
+* Wand - via pip
+* For converting PDF posters to png thumbnails
+    * libmagickwand-dev for Linux
+        * This installs via apt-get install on Debian/Ubuntu along with _a lot_ of dependencies
+    * imagemagick for MacPorts/Homebrew on Mac
 
 _See [requirements.txt](https://github.com/roycoding/qrwebsite/blob/master/requirements.txt)_
 
