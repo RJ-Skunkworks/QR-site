@@ -5,7 +5,7 @@ qrwebsite
 
 ###Current requirements:
 
-* [qr](https://github.com/RJ-Skunkworks/qr)
+* [qr](https://github.com/RJ-Skunkworks/qr) from RJ-Skunkworks
 * python-qrcode - via pip
 * Flask - via pip
 * Image - via pip (installs Pillow)

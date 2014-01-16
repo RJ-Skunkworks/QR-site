@@ -63,6 +63,50 @@ h3 {
   color: #999;
 }
 
+div.QRform{
+  text-align: center;
+  float: left;
+  width: 50%;
+}
+
+div.posterform{
+  text-align: center;
+/*  float: right;*/
+  margin: 10px;
+  margin-left: 50%;
+  width: 50%;
+}
+
+/*Part of the input formatting*/
+div.poster-fields{
+  text-align: right;
+  margin-right: 10%;
+}
+
+
+div.poster{
+  margin: 5px;
+  padding-bottom: 20px;
+}
+
+div.poster-info{
+  text-align: center;
+  font-size: 1.2em;
+  width: 45%;
+}
+
+div.poster-thumb{
+  float: right;
+  margin: 10px;
+  margin-left: 20px;
+}
+
+div.abstract{
+  text-align: justify;
+  margin: 20px;
+  width: 45%;
+}
+
 /*
  * Display navigation links inline
  */
