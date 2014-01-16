@@ -22,7 +22,9 @@
     </div>
     <div class="abstract">
         {% if session['poster.abstract'] %}
-            <p>{{ session['poster.abstract'] }}</p>
+            {% for line in session['poster.abstract'].split('\n') %}
+                <p>{{ line }}</p>
+            {% endfor %}
         {% endif %}
     </div>
     </div>
@@ -31,7 +33,7 @@
 
     <h3>Your QR Code:</h3>
     <div style="text-align: center;">
-        <img src="{{ imgURL }}"/>
+        <a style="border:0;" href="{{ imgURL }}"><img src="{{ imgURL }}"/></a>
     </div>
     <br/>
     {% if prefix %}

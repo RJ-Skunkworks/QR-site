@@ -53,7 +53,8 @@ def cookiecheck(f):
 @app.route('/qrcode')
 @cookiecheck
 def qrcode():
-    return render_template('qrcode.html', imgURL = qrURL(session['qr.prefix'],session['qr.URL']), URL = session['qr.URL'], prefix = session['qr.prefix'])
+    return render_template('qrcode.html', imgURL = qrURL(session['qr.prefix'],\
+    session['qr.URL']), URL = session['qr.URL'], prefix = session['qr.prefix'])
 
 @app.route('/posterpage')
 @cookiecheck
@@ -61,7 +62,9 @@ def posterpage():
     # For dev at this point just use a single page / URL
     prefix = 'http://'
     URL = '127.0.0.1:5000' + url_for('posterpage')
-    return render_template('posterpage.html', data = session, imgURL = qrURL(prefix,URL), URL=URL, prefix=prefix, pngpath=pdf2png.pdfpreview(session['poster.posterfile'], './static/img/'+session['poster.posterfile'].split('/')[-1]+'.png'))
+    return render_template('posterpage.html', data = session, imgURL = qrURL(prefix,URL),\
+    URL=URL, prefix=prefix, pngpath=pdf2png.pdfpreview(session['poster.posterfile'],\
+    './static/img/'+session['poster.posterfile'].split('/')[-1]+'.png'))
 
 @app.route('/nocookies')
 def nocookies():
