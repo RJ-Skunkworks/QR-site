@@ -13,6 +13,12 @@ import pdf2png
 app = Flask(__name__)
 app.config.from_object('config')
 
+# Enable debugging toolbar from
+# https://github.com/mgood/flask-debugtoolbar
+#from flask_debugtoolbar import DebugToolbarExtension
+#app.debug = True
+#toolbar = DebugToolbarExtension(app)
+
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -64,7 +70,7 @@ def posterpage():
     URL = '127.0.0.1:5000' + url_for('posterpage')
     return render_template('posterpage.html', data = session, imgURL = qrURL(prefix,URL),\
     URL=URL, prefix=prefix, pngpath=pdf2png.pdfpreview(session['poster.posterfile'],\
-    './static/img/'+session['poster.posterfile'].split('/')[-1]+'.png'))
+    './static/img/'+session['poster.posterfile'].split('/')[-1]+'.png',subproc=True))
 
 @app.route('/nocookies')
 def nocookies():
@@ -74,6 +80,7 @@ def qrURL(URL,prefix='http'):
     '''Render QR code and return image URL.'''
     URL = prefix+URL
 
+    # Sanitize/reformat temp file URL
     tempURL = './static/img/temp-'+re.sub('\W','_',URL)+'.png'
 
     img = qrgen.url2qr(URL,imgtype = 'png')
