@@ -1,0 +1,16 @@
+{% extends "base_templates/page_base.html" %}  {# base_templates/page_base.html extends base_templates/base.html #}
+
+{% block main %}
+
+  <div class="jumbo">
+    <h2>This is the QR generator app thing!<h2>
+    <h3>Your QR Code:<h3>
+    <a style="border:0;" href="{{ imgURL }}"><img src="{{ imgURL }}"/></a>
+    <br/>
+    {% if prefix %}
+        <h3><a href="{{ prefix+URL }}">{{ prefix+URL }}</a><h3>
+    {% else %}
+        <h3>{{ URL }}<h3>
+    {% endif %}
+  </div>
+{% endblock %}

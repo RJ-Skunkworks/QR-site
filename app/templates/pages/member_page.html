@@ -1,5 +1,12 @@
-{% extends "layout.html" %}
-{% block content %}
+{% extends "base_templates/page_base.html" %}  {# base_templates/page_base.html extends base_templates/base.html #}
+
+{% block main %}
+<h1>Member page</h1>
+
+<p>This page is accessible to authenticated user (users that have signed in).</p>
+
+<p>The code:</p>
+<pre>
   <div class="jumbo">
     <h2>This is the QR generator app thing!</h2>
     <div class='QRform'>
@@ -18,7 +25,7 @@
     <h3>Enter poster info</h3>
     <form action="/pagegen" method="post">
         <div class="poster-fields">
-        <p>Poster title: <input type="text" name="posterfile" value="./test/test-poster.pdf"/><br/></p>
+        <p>Poster Image: <input type="text" name="posterfile" value="./test/test-poster.pdf"/><br/></p>
         <p>Poster title: <input type="text" name="title" value="Awesome Sauce is good for dogs"/><br/></p>
         <p>Authors: <input type="text" name="authors" value="Snoopy, Brian the Dog, and Skooby Doo"/><br/></p>
         <p>Contact email (public): <input type="text" name="contact" value="snoopdoggydogg@hotmail.com"/><br/></p>
@@ -31,4 +38,5 @@
     </div>
     
   </div>
+
 {% endblock %}

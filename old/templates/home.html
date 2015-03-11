@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <h2>This is the QR generator app thing!</h2>
+    <div class='QRform'>
+    <h3>Enter a URL</h3>
+    <form action="/qrrequest" method="post">
+        <select name="prefix">
+            <option value="http://">http://</option>
+            <option value="https://">https://</option>
+            <option value=""> </option>
+        </select>
+        <input type="text" name="URL" />
+        <input type="submit" value="Generate QR Code" />
+    </form>
+    </div>
+    <div class="posterform">
+    <h3>Enter poster info</h3>
+    <form action="/pagegen" method="post">
+        <div class="poster-fields">
+        <p>Poster Image: <input type="text" name="posterfile" value="./test/test-poster.pdf"/><br/></p>
+        <p>Poster title: <input type="text" name="title" value="Awesome Sauce is good for dogs"/><br/></p>
+        <p>Authors: <input type="text" name="authors" value="Snoopy, Brian the Dog, and Skooby Doo"/><br/></p>
+        <p>Contact email (public): <input type="text" name="contact" value="snoopdoggydogg@hotmail.com"/><br/></p>
+        <p>Conference: <input type="text" name="conf" value="Research by Dogs, XIV"/><br/></p>
+        <p>Conference date(s): <input type="text" name="date" value="12-12-12"/><br/><br/></p>
+        </div>
+        <p style="text-align:center;">Poster abstract:</br><textarea name="abstract" cols=50 rows=10 wrap=physical>This is a poster abstract. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea><br/></br>
+        <input style="text-align:center;" type="submit" value="Build poster page" /></p>
+    </form>
+    </div>
+    
+  </div>
+{% endblock %}

@@ -1,12 +1,13 @@
-{% extends "layout.html" %}
-{% block content %}
+{% extends "base_templates/page_base.html" %}  {# base_templates/page_base.html extends base_templates/base.html #}
+
+{% block main %}
   <div class="jumbo">
     <div class="poster">
         {% if session['poster.title'] %}
             <h2>{{ session['poster.title'] }}</h2>
         {% endif %}
     <div class="poster-thumb">
-        <img src="{{ pngpath }}"/>
+        {# <img src="{{ pngpath }}"/> #}
     </div>
     <div class="poster-info">
         {% if session['poster.authors'] %}
