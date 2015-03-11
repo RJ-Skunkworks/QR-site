@@ -12,6 +12,13 @@ APP_NAME = "PosterLynx"
 # Flask settings                     # Generated with: import os; os.urandom(24)
 SECRET_KEY = os.getenv('SECRET_KEY', '\xb9\x8d\xb5\xc2\xc4Q\xe7\x8ej\xe0\x05\xf3\xa3kp\x99l\xe7\xf2i\x00\xb1-\xcd')
 # PLEASE USE A DIFFERENT KEY FOR PRODUCTION ENVIRONMENTS!
+
+
+STRIPE_KEYS = {
+    'secret_key': os.environ['SECRET_KEY'],
+    'publishable_key': os.environ['PUBLISHABLE_KEY']
+}
+
                                                     
 # SQLAlchemy settings
 SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///app.sqlite')

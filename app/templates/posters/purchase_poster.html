@@ -1,0 +1,28 @@
+{% extends "base_templates/page_base.html" %}  {# base_templates/page_base.html extends base_templates/base.html #}
+
+{# // <script
+//     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+//     data-key="pk_test_w3qNBkDR8A4jkKejBmsMdH34"
+//     data-amount="999"
+//     data-name="jeffknupp.com"
+//     data-description="Writing Idiomatic Python 3 PDF ($9.99)">
+// </script>
+ #}
+{% block main %}
+
+<form action="/charge" method="post">
+    <article>
+      <label>
+        <span>${{ product.price}}</span>
+      </label>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="{{ key }}"
+            data-description="A Flask Charge"
+            data-amount="{{ product.price*100 }}"></script>
+  <input type="hidden" name="product_id" value="{{ product.id }}" />
+  </form>
+
+
+{% endblock %}

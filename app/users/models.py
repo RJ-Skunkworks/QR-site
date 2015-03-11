@@ -17,10 +17,11 @@ class User(db.Model, UserMixin):
 
     # Relationships
     user_auth = db.relationship('UserAuth', uselist=False)
-    roles = db.relationship('Role', secondary='user_roles',
-            backref=db.backref('users', lazy='dynamic'))
-    posters = db.relationship('Poster', backref='poster',
-                                lazy='dynamic')
+    posters = db.relationship('Poster', backref='poster', lazy='dynamic')
+
+    roles = db.relationship('Role', secondary='user_roles', backref=db.backref('users', lazy='dynamic'))
+    purchases = db.relationship('Purchase', secondary='user_purchases', backref=db.backref('users', lazy='dynamic'))
+    remaining_posters = db.Column(db.Integer, server_default='1')
 
 
 # Define the UserAuth data model.

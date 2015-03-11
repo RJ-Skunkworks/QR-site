@@ -4,6 +4,7 @@ import datetime
 from app.app_and_db import app, db
 from app.startup.init_app import init_app
 from app.users.models import User, UserAuth, Role
+from app.posters.models import Poster, Item, Purchase, UserPurchases
 
 def reset_db(app, db):
     """
@@ -22,6 +23,13 @@ def reset_db(app, db):
     print('Adding roles')
     admin_role = Role(name='admin')
     db.session.add(admin_role)
+
+    print('Adding inventory')
+    item = Item(title='Masters', allowed_posters=5, price=00.99)
+    db.session.add(item)
+    
+    # itemfree = Item(title='Free', allowed_posters=1, price=00.00)
+    # db.session.add(itemfree)
 
     # Add users
     print('Adding users')

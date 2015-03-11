@@ -24,10 +24,10 @@ def init_app(app, db, extra_config_settings={}):
     # Setup Flask-User to handle user account related forms
     
     from app.users.models import UserAuth, User
-    from app.posters.models import Poster
+    from app.posters.models import Poster, Item, Purchase, UserPurchases
     from app.users.forms import MyRegisterForm
     from app.users.views import user_profile_page
-    from app.posters.forms import PosterCreateForm
+    from app.posters.forms import PosterCreateForm, BuyPosterForm
 
     db_adapter = SQLAlchemyAdapter(db, User,        # Setup the SQLAlchemy DB Adapter
             UserAuthClass=UserAuth)                 #   using separated UserAuth/User data models

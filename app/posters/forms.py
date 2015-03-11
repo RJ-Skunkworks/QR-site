@@ -1,8 +1,8 @@
 from flask_wtf import Form
-from wtforms import StringField, TextAreaField, SubmitField, DateField, validators
+from wtforms import StringField, TextAreaField, SubmitField, DateField, HiddenField, validators
 
 
-# Define the User profile form
+
 class PosterCreateForm(Form):
 	       
     title = StringField('Poster title', validators=[
@@ -16,3 +16,9 @@ class PosterCreateForm(Form):
     abstract = TextAreaField('Abstract')
     contact = StringField('Contact (public)')
     submit = SubmitField('Save')
+
+# Define the User profile form
+class BuyPosterForm(Form):
+    # product_id = HiddenField()
+    # product_id = HiddenField()
+    submit = SubmitField('Buy')

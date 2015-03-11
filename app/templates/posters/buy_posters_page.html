@@ -1,0 +1,47 @@
+{% extends "base_templates/page_base.html" %}  {# base_templates/page_base.html extends base_templates/base.html #}
+
+{# // <script
+//     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+//     data-key="pk_test_w3qNBkDR8A4jkKejBmsMdH34"
+//     data-amount="999"
+//     data-name="jeffknupp.com"
+//     data-description="Writing Idiomatic Python 3 PDF ($9.99)">
+// </script>
+ #}
+{% block main %}
+
+<h1>Buy More Posters</h1>
+{# 
+<p><a href="{{ url_for('user.change_username') }}">Change username</a></p>
+<p><a href="{{ url_for('user.change_password') }}">Change password</a></p> #}
+{# <http>
+    <body>
+    <form action="buy" method="POST">
+
+<input type="hidden" name="product_id" value="2" />
+</form>
+</body>
+</html>
+ #}
+   {% for poster in data %}
+    <li><h2>{{ poster.title }}</h2>Your get {{ poster.allowed_posters }} posters for ${{ poster.price }}
+    <p><a href="{{ url_for('buy', title=poster.title) }}">Buy this</a></p>
+  {% else %}
+    <li><em>Unbelievable. Nothing here so far</em>
+  {% endfor %}
+  </ul>
+
+
+{# {% from "base_templates/form_macros.html" import render_field, render_submit_field %}
+<form action="" method="POST" class="form" role="form">
+  <div class="row">
+    <div class="col-sm-6 col-md-5 col-lg-4">
+    {{ form.hidden_tag() }}
+
+    {{ render_field(form.poduct_title, tabindex=240) }}
+    {{ render_submit_field(form.submit, tabindex=280) }}
+    </div>
+  </div>
+</form> #}
+
+{% endblock %}
