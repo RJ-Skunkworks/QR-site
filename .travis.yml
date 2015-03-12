@@ -1,0 +1,17 @@
+sudo: false
+language: python
+
+python:
+  - "2.7"
+
+
+script:
+    - tox -e \
+      $(echo py$TRAVIS_PYTHON_VERSION | tr -d . | sed -e 's/pypypy/pypy/')-$REQUIREMENTS
+
+branches:
+  except:
+    - website
+
+notifications:
+  email: false
