@@ -75,6 +75,7 @@ def store_page():
 
 
 @app.route('/buy/<title>', methods=['GET'])
+@login_required
 def buy(title=None):
     form = BuyPosterForm(request.form, product_id=title)
     prod  = Item.query.filter_by(title=title).first()
