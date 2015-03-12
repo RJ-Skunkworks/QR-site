@@ -42,9 +42,7 @@ if admin2: ADMINS.append(admin2)
 if admin3: ADMINS.append(admin3)
 if admin4: ADMINS.append(admin4)
 
-QRGENPATH = '../qr/'
 
-sys.path.append(QRGENPATH)
 static_path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), os.pardir, 'static'))
 QR_IMG_PATH = os.path.join(static_path,'img')
 

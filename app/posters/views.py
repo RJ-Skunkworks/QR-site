@@ -3,8 +3,8 @@ from app.app_and_db import app, db
 from flask import Flask, render_template, request, redirect, url_for, session
 from functools import wraps
 import sys
-import qrgen
 import re
+from app.qrgen import url2qr
 from app.pdf2png import pdfpreview
 import os
 from app.posters.forms import PosterCreateForm, BuyPosterForm
