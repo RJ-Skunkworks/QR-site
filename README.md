@@ -1,5 +1,6 @@
 qrwebsite
 =========
+[![Build Status](https://travis-ci.org/RJ-Skunkworks/QR-site.svg?branch=master)](https://travis-ci.org/RJ-Skunkworks/QR-site)
 
 ##Development version of QR poster project
 
