@@ -1,6 +1,12 @@
 {% extends "base_templates/page_base.html" %}  {# base_templates/page_base.html extends base_templates/base.html #}
 
+
+
 {% block main %}
+
+<div class="container" style="padding-top: 70px;">
     {{ data.title }}
     <img src="{{ data.qr_image }}">
+
+</div>
 {% endblock %}

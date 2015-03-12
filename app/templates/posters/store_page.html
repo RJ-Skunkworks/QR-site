@@ -9,8 +9,9 @@
 // </script>
  #}
 {% block main %}
+<div class="container" style="padding-top: 70px;">
 
-<h1>Buy More Posters</h1>
+<h1>Store</h1>
 {# 
 <p><a href="{{ url_for('user.change_username') }}">Change username</a></p>
 <p><a href="{{ url_for('user.change_password') }}">Change password</a></p> #}
@@ -23,11 +24,13 @@
 </body>
 </html>
  #}
+ <ul>
    {% for poster in data %}
-    <li><h2>{{ poster.title }}</h2>Your get {{ poster.allowed_posters }} posters for ${{ poster.price }}
-    <p><a href="{{ url_for('buy', title=poster.title) }}">Buy this</a></p>
+    <li><h2>{{ poster.title }}</h2></li>
+    <p>{{poster.description }}</p> 
+    <p><a href="{{ url_for('buy', title=poster.title) }}">Buy ${{ poster.price }}</a></p>
   {% else %}
-    <li><em>Unbelievable. Nothing here so far</em>
+    <li><em>Unbelievable. Nothing here so far</em></li>
   {% endfor %}
   </ul>
 
@@ -43,5 +46,5 @@
     </div>
   </div>
 </form> #}
-
+</div>
 {% endblock %}

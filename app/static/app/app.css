@@ -1,13 +1,68 @@
 /**** element styles ****/
-hr { border-color: #cccccc; margin: 0px; }
+/*hr { border-color: #cccccc; margin: 0px; }*/
 
 /**** header, main and footer divs ****/
-.header-title { font-size: 30px; }
+/*.header-title { font-size: 30px; }*/
 
 /**** class-based style modifiers ****/
 
-.no-margins { margin: 0px; }
+/*.no-margins { margin: 0px; }
 
 .with-margins { margin: 10px; }
 
 .col-centered { float: none; margin: 0 auto; }
+
+
+.divider {
+    height:50px;
+}
+*/
+
+
+
+/* navbar */
+.navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+    margin-bottom: 0px;
+    position: fixed;
+    width: 100%;
+    border-radius: 0px;
+    z-index: 10007;
+}
+section {
+    height:500px;
+    padding-top:50px;
+    padding-bottom:50px;
+    overflow:auto;
+}
+
+.bg-1 {
+	background: url('/static/img/bg_blueplane.jpg') no-repeat center center fixed;
+    color:#fff;
+    background-size:cover;
+}
+  
+.bg-2 {
+	background: url('/static/img/bg_suburb.jpg') no-repeat top center fixed;
+    color:#fff;
+    background-size:cover;
+}
+
+.bg-3 {
+	background: url('/static/img/bg_blueplane.jpg') no-repeat bottom center fixed;
+    color:#fff;
+    background-size:cover;
+}
+
+#footer {
+    height: 60px;
+    background-color:#585858;
+    margin-top:50px;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+#footer a {
+  color:#efefef;
+}

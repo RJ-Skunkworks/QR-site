@@ -24,7 +24,7 @@ def init_app(app, db, extra_config_settings={}):
     # Setup Flask-User to handle user account related forms
     
     from app.users.models import UserAuth, User
-    from app.posters.models import Poster, Item, Purchase, UserPurchases
+    from app.posters.models import Poster, Item, Purchase, UserPurchases, Author
     from app.users.forms import MyRegisterForm
     from app.users.views import user_profile_page
     from app.posters.forms import PosterCreateForm, BuyPosterForm

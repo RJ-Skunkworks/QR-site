@@ -9,10 +9,9 @@ class PosterCreateForm(Form):
         validators.DataRequired('Title is required')])
     date = StringField("Event date", validators=[
         validators.DataRequired('Please use 02-4-2015 format.')])
-    authors = StringField('Authors', validators=[
-        validators.DataRequired('Authors are required')])
-    slug = StringField('URL', validators=[
-        validators.DataRequired('Url is required and must be unique.')])
+    # authors = StringField('Authors', validators=[
+    #     validators.DataRequired('Authors are required')])
+    slug = StringField('Custom-URL')
     abstract = TextAreaField('Abstract')
     contact = StringField('Contact (public)')
     submit = SubmitField('Save')

@@ -9,7 +9,9 @@
 // </script>
  #}
 {% block main %}
+<div class="container" style="padding-top: 70px;">
+
   <h2>Thanks, you paid <strong>{{ data.paid }}</strong>!</h2>
   <strong>{{ data.count }}</strong> were added to your account. you now have a total of {{ data.total }} posters you can make
-
+</div>
 {% endblock %}

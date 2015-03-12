@@ -14,25 +14,24 @@ import stripe
 
 stripe.api_key = app.config['STRIPE_KEYS']['secret_key']
 
-# Get user input to generate a QR code
-@app.route('/qrrequest', methods=['POST'])
-def qrrequest():
-    session['qr.prefix'] = request.form['prefix']
-    session['qr.URL'] = request.form['URL']
-    return redirect(url_for('qrcode'))
-
-# Get user input to generate a poster page and QR code
 
 @app.route('/create', methods=['POST','GET'])
 @login_required
 def create_poster_page():
     form = PosterCreateForm(request.form)
+    bought = len(current_user.purchases) > 0;
     
     if request.method=='POST' and form.validate():
+        if current_user.remaining_posters <= 0:
+            return redirect(url_for('list_poster_page'))
         
         entry = Poster()
         entry.user_id = current_user.id
+        
         form.populate_obj(entry)
+        
+        if not(bought and current_user.remaining_posters >= 1):
+            entry.slug = ''
 
         entry.qr_image = generate_qr(request.headers['Host']+"/"+entry.slug, entry)
         
@@ -47,7 +46,10 @@ def create_poster_page():
         # Redirect to home page
         return redirect(url_for('show_poster_page', slug= entry.slug))
 
-    return render_template('posters/create_poster_page.html', form=form, remaining_posters= current_user.remaining_posters)
+    return render_template('posters/create_poster_page.html', 
+        form=form, 
+        remaining_posters= current_user.remaining_posters, 
+        show_slug=bought)
 
 @app.route('/list', methods=['GET'])
 @login_required
@@ -58,11 +60,6 @@ def list_poster_page():
     return render_template('posters/list_poster_page.html', data=posters)
 
 
-@app.route('/qrcode')
-def qrcode():
-    return render_template('pages/qrcode_page.html', imgURL = qrURL(session['qr.prefix'],\
-    session['qr.URL']), URL = session['qr.URL'], prefix = session['qr.prefix'])
-
 @app.route('/<slug>')
 def show_poster_page(slug=None):
     # For dev at this point just use a single page / URL
@@ -71,23 +68,11 @@ def show_poster_page(slug=None):
     return render_template('posters/show_poster_page.html', data=poster)
 
 
-@app.route('/buy-posters')
-def buy_posters_page():
+@app.route('/store')
+def store_page():
     posters = Item.query.all()
-    return render_template('posters/buy_posters_page.html', data=posters)
-#     return """<http><body><form action="buy" method="POST">
-# <script
-#     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-#     data-key="pk_test_w3qNBkDR8A4jkKejBmsMdH34"
-#     data-amount="999"
-#     data-name="jeffknupp.com"
-#     data-description="Writing Idiomatic Python 3 PDF ($9.99)">
-# </script>
-# <input type="hidden" name="product_id" value="2" />
-# </form>
-# </body>
-# </html>
-# """
+    return render_template('posters/store_page.html', data=posters)
+
 
 @app.route('/buy/<title>', methods=['GET'])
 def buy(title=None):

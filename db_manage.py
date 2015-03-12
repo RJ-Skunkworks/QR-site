@@ -25,7 +25,7 @@ def reset_db(app, db):
     db.session.add(admin_role)
 
     print('Adding inventory')
-    item = Item(title='Masters', allowed_posters=5, price=00.99)
+    item = Item(title='Masters', allowed_posters=5, price=00.99, description='You get 5 posters, ability for custom urls, need 1 more feature.')
     db.session.add(item)
     
     # itemfree = Item(title='Free', allowed_posters=1, price=00.00)

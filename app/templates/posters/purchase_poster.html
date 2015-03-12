@@ -9,6 +9,7 @@
 // </script>
  #}
 {% block main %}
+<div class="container" style="padding-top: 70px;">
 
 <form action="/charge" method="post">
     <article>
@@ -24,5 +25,6 @@
   <input type="hidden" name="product_id" value="{{ product.id }}" />
   </form>
 
+</div>
 
 {% endblock %}
