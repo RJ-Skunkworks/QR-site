@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from functools import wraps
 import sys
 import re
-from app.qrgen import url2qr
+import qrgen
 from app.pdf2png import pdfpreview
 import os
 from app.posters.forms import PosterCreateForm, BuyPosterForm
