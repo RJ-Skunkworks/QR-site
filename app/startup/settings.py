@@ -24,10 +24,10 @@ STRIPE_KEYS = {
 SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///app.sqlite')
 
 # Flask-Mail settings
-MAIL_USERNAME =           os.getenv('MAIL_USERNAME',        'admin@javierachavez.com')
-MAIL_PASSWORD =           os.getenv('MAIL_PASSWORD',        'S1?cgN&Z=KIv')
-MAIL_DEFAULT_SENDER =     os.getenv('MAIL_DEFAULT_SENDER',  APP_NAME + ' <admin@javierachavez.com>')
-MAIL_SERVER =             os.getenv('MAIL_SERVER',          'box884.bluehost.com')
+MAIL_USERNAME =           os.getenv('MAIL_USERNAME',        '')
+MAIL_PASSWORD =           os.getenv('MAIL_PASSWORD',        '')
+MAIL_DEFAULT_SENDER =     os.getenv('MAIL_DEFAULT_SENDER',  APP_NAME + ' <exmple@example.com>')
+MAIL_SERVER =             os.getenv('MAIL_SERVER',          '')
 MAIL_PORT =           int(os.getenv('MAIL_PORT',            '465'))
 MAIL_USE_SSL =        int(os.getenv('MAIL_USE_SSL',         '1'))  # Use '1' for True and '0' for False
 MAIL_USE_TLS =        int(os.getenv('MAIL_USE_TLS',         '0'))  # Use '1' for True and '0' for False
