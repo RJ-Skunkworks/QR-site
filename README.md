@@ -21,5 +21,5 @@ _See [requirements.txt](https://github.com/roycoding/qrwebsite/blob/master/requi
 * You may need to change the variable _QRGENPATH_ in routing.py to be able to import the qr library.
 
 ```
-python routes.py
+python runserver.py
 ```
