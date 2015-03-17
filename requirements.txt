@@ -20,8 +20,8 @@ passlib==1.6.2
 py-bcrypt==0.4
 pycrypto==2.6.1
 python-slugify==0.1.0
+pytz==2014.10
 qrcode==4.0.4
--e git://github.com/RJ-Skunkworks/qr.git@master#egg=qrgen
 requests==2.5.3
 six==1.5.2
 slugify==0.0.1

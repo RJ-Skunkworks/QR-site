@@ -2,16 +2,23 @@ from app.app_and_db import db
 import re
 from slugify import slugify
 import time
+from datetime import datetime
+from pytz import timezone
 
+
+def get_dt():
+    '''Return the time at given timezone in utc'''
+    # Current time in UTC
+    now_utc = datetime.now(timezone('UTC'))
+    return  now_utc.astimezone(timezone('US/Mountain')).strftime("%Y-%m-%d %H:%M:%S %Z%z")
 
 class Poster(db.Model):
 
     id = db.Column(db.Integer(), primary_key=True)
-    title = db.Column(db.String(256), nullable=False)
-    slug = db.Column(db.String(256), unique=True)
-    # authors = db.Column(db.String(256), nullable=False)
+    title = db.Column(db.String(256), nullable=False, server_default='')
+    slug = db.Column(db.String(256), unique=True, server_default='')
     contact = db.Column(db.String(256), nullable=False, server_default='')
-    date = db.Column(db.String(64), nullable=False, server_default='')
+    date = db.Column(db.String(64), nullable=False, server_default=get_dt())
     abstract = db.Column(db.String(1024), nullable=False, server_default='')
     qr_image = db.Column(db.LargeBinary)
 
@@ -24,6 +31,7 @@ class Poster(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) 
     authors = db.relationship('Author', backref='poster', lazy='dynamic')
 
+    
     def __repr__(self):
         return '<Poster %r>' % self.title
 

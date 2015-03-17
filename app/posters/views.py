@@ -1,10 +1,10 @@
 from flask_user import current_user, login_required
 from app.app_and_db import app, db
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, Response, render_template, request, redirect, url_for, session
 from functools import wraps
 import sys
 import re
-import qrgen
+from qrgen import qrgen
 from app.pdf2png import pdfpreview
 import os
 from app.posters.forms import PosterCreateForm, BuyPosterForm
@@ -51,6 +51,12 @@ def create_poster_page():
         remaining_posters= current_user.remaining_posters, 
         show_slug=bought)
 
+@app.route('/add-author', methods=['POST'])
+def add_author():
+    print (request.data)
+    resp = Response(status=200, mimetype='application/json')
+    return resp
+    
 @app.route('/list', methods=['GET'])
 @login_required
 def list_poster_page():
